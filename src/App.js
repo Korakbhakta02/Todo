@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { StyleSheet, View, FlatList, ScrollView, Alert } from "react-native";
+import {
+  StyleSheet,
+  View,
+  FlatList,
+  ScrollView,
+  Alert,
+  TouchableWithoutFeedback,
+  Keyboard
+} from "react-native";
 import AddTodo from "/component/addtodo";
 import Header from "/component/header";
 import Todolist from "/component/todoitems";
@@ -29,22 +37,28 @@ function App() {
     }
   };
   return (
-    <View style={styles.app}>
-      <Header />
-      <ScrollView>
-        <View style={styles.content}>
-          <AddTodo submithandler={submithandler} />
-          <View style={styles.list}>
-            <FlatList
-              data={todo}
-              renderItem={({ item }) => (
-                <Todolist item={item} presshandler={presshandler} />
-              )}
-            />
+    <TouchableWithoutFeedback
+      onPress={() => {
+        console.log("dismissed");
+      }}
+    >
+      <View style={styles.app}>
+        <Header />
+        <ScrollView>
+          <View style={styles.content}>
+            <AddTodo submithandler={submithandler} />
+            <View style={styles.list}>
+              <FlatList
+                data={todo}
+                renderItem={({ item }) => (
+                  <Todolist item={item} presshandler={presshandler} />
+                )}
+              />
+            </View>
           </View>
-        </View>
-      </ScrollView>
-    </View>
+        </ScrollView>
+      </View>
+    </TouchableWithoutFeedback>
   );
 }
 
