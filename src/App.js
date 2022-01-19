@@ -23,7 +23,7 @@ function App() {
         return [{ text: text, key: Math.random().toString() }, ...prevTodos];
       });
     } else {
-      Alert.alert("OOPS!", "Must be over 3", [
+      Alert.alert("OOPS!", [
         { text: "Close", onPress: () => console.log("Closed") }
       ]);
     }
